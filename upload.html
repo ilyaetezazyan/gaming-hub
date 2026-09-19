@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>آپلود ویدیو | Gaming Hub</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <body>
+  <!-- دکمه تغییر تم -->
+  <button class="theme-switch-btn" id="themeSwitchBtn" title="تغییر تم">
+    <span>🌓</span>
+  </button>
+  
+  <!-- بقیه محتوا -->
+  <header>...</header>
+  ...
+  <header>
+    <a href="index.html" class="btn-link">🏠 خانه</a>
+    <h2>آپلود ویدیوی بازی</h2>
+  </header>
+
+  <main class="upload-form">
+    <form id="videoForm">
+      <input type="text" id="title" placeholder="عنوان ویدیو" required>
+      <input type="text" id="game" placeholder="نام بازی" required>
+      <select id="genre" required>
+        <option value="">انتخاب سبک بازی</option>
+        <option value="اکشن">اکشن</option>
+        <option value="ماجراجویی">ماجراجویی</option>
+        <option value="ورزشی">ورزشی</option>
+        <option value="استراتژی">استراتژی</option>
+        <option value="نقش‌آفرینی">نقش‌آفرینی</option>
+        <option value="شبیه‌سازی">شبیه‌سازی</option>
+      </select>
+      <input type="url" id="videoUrl" placeholder="لینک مستقیم ویدیو (mp4/webm)" required>
+      <input type="url" id="thumbnail" placeholder="لینک تصویر کاور (اختیاری)">
+      <textarea id="description" rows="3" placeholder="توضیحات ویدیو"></textarea>
+      <button type="submit">📤 انتشار</button>
+    </form>
+    <div id="uploadStatus" class="status-msg"></div>
+  </main>
+
+  <script src="js/upload.js"></script>
+  <script>
+    if (!sessionStorage.getItem('loggedIn')) {
+      window.location.href = 'login.html';
+    }
+  </script>
+  <script>
+  // ===== مدیریت تم =====
+  const themeBtn = document.getElementById('themeSwitchBtn');
+  
+  // بارگذاری تم ذخیره شده
+  const savedTheme = localStorage.getItem('hubTheme');
+  if (savedTheme === 'light') {
+    document.body.classList.add('light-mode');
+  }
+  
+  // تغییر تم با کلیک
+  themeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    
+    if (document.body.classList.contains('light-mode')) {
+      localStorage.setItem('hubTheme', 'light');
+    } else {
+      localStorage.setItem('hubTheme', 'dark');
+    }
+  });
+</script>
+</body>
+</html>

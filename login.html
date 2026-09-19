@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>ورود | Gaming Hub</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <body class="login-body">
+  <!-- دکمه تغییر تم کلی -->
+  <button class="theme-switch-btn" id="themeSwitchBtn" title="تغییر تم">
+    <span>🌓</span>
+  </button>
+  
+    <body class="login-body"></body>
+  <div class="login-container">
+    <h1>🎮 Gaming Hub</h1>
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="نام کاربری" required>
+      <input type="password" id="password" placeholder="رمز عبور" required>
+      <button type="submit">ورود</button>
+    </form>
+    <div id="loginError" class="error-msg"></div>
+    <p style="margin-top:20px;">حساب نداری؟ <a href="signup.html" style="color:#e74c3c;">ثبت‌نام کن</a></p>
+  </div>
+  <script src="js/auth.js"></script>
+  <script>
+  // ===== مدیریت تم =====
+  const themeBtn = document.getElementById('themeSwitchBtn');
+  
+  const savedTheme = localStorage.getItem('hubTheme');
+  if (savedTheme === 'light') {
+    document.body.classList.add('light-mode');
+  }
+  
+  themeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    
+    if (document.body.classList.contains('light-mode')) {
+      localStorage.setItem('hubTheme', 'light');
+    } else {
+      localStorage.setItem('hubTheme', 'dark');
+    }
+  });
+</script>
+</body>
+</html>

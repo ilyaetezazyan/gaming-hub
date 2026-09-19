@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>Gaming Hub - خانه</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<body>
+  <!-- دکمه تغییر تم -->
+  <button class="theme-switch-btn" id="themeSwitchBtn" title="تغییر تم">
+    <span>🌓</span>
+  </button>
+  
+  <!-- بقیه محتوا -->
+  <header>...</header>
+  ...
+  <header>
+    <div class="logo">🎮 Gaming Hub</div>
+    <div class="header-actions">
+      <a href="upload.html" class="btn-link">📤 آپلود ویدیو</a>
+      <button id="logoutBtn" class="btn-link">🚪 خروج</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <h3>دسته‌بندی‌ها</h3>
+      <ul id="genreList">
+        <li data-genre="all" class="active">همه</li>
+        <li data-genre="اکشن">اکشن</li>
+        <li data-genre="ماجراجویی">ماجراجویی</li>
+        <li data-genre="ورزشی">ورزشی</li>
+        <li data-genre="استراتژی">استراتژی</li>
+        <li data-genre="نقش‌آفرینی">نقش‌آفرینی</li>
+        <li data-genre="شبیه‌سازی">شبیه‌سازی</li>
+      </ul>
+    </aside>
+
+    <main id="videoGrid" class="video-grid">
+      <!-- ویدیوها اینجا رندر می‌شوند -->
+    </main>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    if (!sessionStorage.getItem('loggedIn')) {
+      window.location.href = 'login.html';
+    }
+  </script>
+  <script>
+  // ===== مدیریت تم =====
+  const themeBtn = document.getElementById('themeSwitchBtn');
+  
+  // بارگذاری تم ذخیره شده
+  const savedTheme = localStorage.getItem('hubTheme');
+  if (savedTheme === 'light') {
+    document.body.classList.add('light-mode');
+  }
+  
+  // تغییر تم با کلیک
+  themeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    
+    if (document.body.classList.contains('light-mode')) {
+      localStorage.setItem('hubTheme', 'light');
+    } else {
+      localStorage.setItem('hubTheme', 'dark');
+    }
+  });
+</script>
+</body>
+
+</html>

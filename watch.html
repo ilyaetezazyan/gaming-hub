@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>تماشای ویدیو | Gaming Hub</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <body>
+  <!-- دکمه تغییر تم -->
+  <button class="theme-switch-btn" id="themeSwitchBtn" title="تغییر تم">
+    <span>🌓</span>
+  </button>
+  
+  <!-- بقیه محتوا -->
+  <header>...</header>
+  ...
+  <header>
+    <a href="index.html" class="btn-link">🏠 خانه</a>
+    <span id="videoTitleHeader"></span>
+  </header>
+  <div class="watch-container">
+    <div class="player-wrapper">
+      <video id="videoPlayer" controls></video>
+    </div>
+    <div class="video-info">
+      <h2 id="videoTitle"></h2>
+      <div class="meta">
+        <span id="gameName"></span> | 
+        <span id="viewsCount"></span> بازدید
+      </div>
+      <div class="actions">
+        <button id="likeBtn">👍 <span id="likes">0</span></button>
+      </div>
+      <p id="videoDesc"></p>
+    </div>
+    <div class="comments-section">
+      <h3>نظرات</h3>
+      <div id="commentsList"></div>
+      <div class="add-comment">
+        <input type="text" id="commentInput" placeholder="نظرت رو بنویس...">
+        <button id="submitComment">ارسال</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/watch.js"></script>
+  <script>
+    if (!sessionStorage.getItem('loggedIn')) {
+      window.location.href = 'login.html';
+    }
+  </script>
+  <script>
+  // ===== مدیریت تم =====
+  const themeBtn = document.getElementById('themeSwitchBtn');
+  
+  // بارگذاری تم ذخیره شده
+  const savedTheme = localStorage.getItem('hubTheme');
+  if (savedTheme === 'light') {
+    document.body.classList.add('light-mode');
+  }
+  
+  // تغییر تم با کلیک
+  themeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    
+    if (document.body.classList.contains('light-mode')) {
+      localStorage.setItem('hubTheme', 'light');
+    } else {
+      localStorage.setItem('hubTheme', 'dark');
+    }
+  });
+</script>
+</body>
+</html>
